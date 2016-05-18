@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo Hit</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">-->
+    <link rel="stylesheet" href="css/pages.css">
+    <script src="js/lib/marked.js"></script>
+</head>
+<body>
+<div id="wrapper">
+
+</div>
+
+
+<canvas></canvas>
+<script>
+    marked.setOptions({
+        renderer: new marked.Renderer(),
+        gfm: true,
+        tables: true,
+        breaks: true,
+        pedantic: true,
+        sanitize: true,
+        smartLists: true,
+        smartypants: true
+    });
+    function getDoc(fn) {
+        return fn.toString().split('\n').slice(1, -1).join('\n') + '\n'
+    }
+    var markdown_content = getDoc(function(){/*
+ ### 项目平台：
+ 暂时仅提供 PC端 支持
+ ### 项目名称:
+ #### [HitPhoto](https://github.com/I2PStudio/PhotoHit)
+ ### 问题描述：
+ 基于照片的弹幕平台, 将用户评论以弹幕形式随机贴在照片上。
+ ### 解决方案：
+ 1.七牛云存储API存取照片,处理照片大小, 压缩照片尺寸等图像处理工作
+ ---
+ 2.Python Django 后端，生成七牛Token，存放照片id，以及对应的弹幕数据
+ ---
+ 3.弹幕 Model : start_at : 在图片上的左起点坐标 , text : 文本数据
+ ---
+ 4.弹幕显示逻辑:随机算法生成起始点，不考虑覆盖下随机位置，随机旋转角度显示弹幕
+ ---
+ ### 项目分工:
+ ##### 王卓炜 (队长):
+ 前端部分
+ ##### 祝力炀:
+ 后端API开发
+ ##### 翁超
+ 七牛云存储接口对接
+     */});
+    document.getElementById("wrapper").innerHTML = marked(markdown_content);
+</script>
+
+<script src="js/canvas.js"></script>
+</body>
+</html>
