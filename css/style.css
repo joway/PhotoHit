@@ -1,9 +1,12 @@
 #columns {
-    column-width: 320px;
+    column-width: 600px;
     column-gap: 15px;
-    width: 90%;
+    width: 50%;
     max-width: 1100px;
     margin: 50px auto;
+    padding: 50px;
+    font-size: 36px;
+
 }
 
 div#columns figure {
@@ -16,10 +19,11 @@ div#columns figure {
     transition: opacity .4s ease-in-out;
     column-break-inside: avoid;
     display: inline-block;
+    text-align: center;
 }
 
 div#columns figure img {
-    width: 100%;
+    width: 90%;
     height: auto;
     border-bottom: 1px solid #ccc;
     padding-bottom: 15px;
@@ -30,17 +34,18 @@ div#columns:hover figure:not(:hover) {
     opacity: 0.4;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 600px) {
     #columns {
         column-gap: 0;
     }
 
     #columns figure {
-        width: 100%;
+        /*width: 50%;*/
     }
 }
 
 .screen{
     /*background-color: #3288e6;*/
     font-size: 36px;
+    text-align: center;
 }

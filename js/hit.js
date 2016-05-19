@@ -20,9 +20,9 @@ function HitPhoto(stage, commentBox) {
             //从何时开始
             time: time,
             //经过的时间
-            duration: 4500,
+            duration: 3500,
             //舞台偏移的高度
-            top: Math.random() * 100,
+            top: Math.random() * 400,
             //弹幕文字大小
             size: 60,
             //弹幕颜色
@@ -36,7 +36,7 @@ function HitPhoto(stage, commentBox) {
     function initPlayLists(texts) {
         var playLists = []
         for (var i = 0; i < texts.length; ++i) {
-            playLists.push(initPlayList(i * 100, texts[i]));
+            playLists.push(initPlayList(i * 1000, texts[i]));
         }
         return playLists;
     }
@@ -63,12 +63,13 @@ function HitPhoto(stage, commentBox) {
 
         var currentSession = 0;
 
-        setInterval(function () {
+        window.inter = setInterval(function () {
             //第xx场开始表演
             director.trigger(currentSession + 'start');
             //从头再来一遍
             if (currentSession === window.PlayCount) {
                 currentSession = 0;
+                clearInterval(window.inter);
             } else {
                 currentSession++;
             }
@@ -86,7 +87,7 @@ function HitPhoto(stage, commentBox) {
 
     function config() {
         //弹幕的总时间（演出总时间）
-        window.Time = 9000;
+        window.Time = 10000;
         //检测时间间隔（每一场的时间）
         window.CheckTime = 100;
         //总场数
@@ -132,9 +133,9 @@ function HitPhoto(stage, commentBox) {
             //准备入场,先隐藏在幕布后面
             appearance.css({
                 position: 'absolute',
-                left: stage.width() + 'px',
+                left: stage.width() - 100 + 'px',
                 top: that.play.top || 0,
-                zIndex: 10,
+                zIndex: 1000,
                 display: 'block'
             });
             //确定入场偏移时间，入场表演
