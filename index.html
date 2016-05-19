@@ -7,7 +7,6 @@
     <title>PhotoHit</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/lib/jquery.min.js"></script>
-    <script src="js/lib/jquery.danmu.min.js"></script>
     <script src='js/lib/prefixfree.min.js'></script>
     <script src='js/lib/vex.combined.min.js'></script>
     <link rel="stylesheet" href="css/lib/vex.css" />
@@ -16,11 +15,25 @@
     <script src="js/hit.js"></script>
     <script src = "js/lib/wilddog.js" ></script>
 
+    <!--upload-->
+    <link rel="stylesheet" type="text/css" href="css/lib/webuploader.css">
+    <link rel="stylesheet" type="text/css" href="css/upload.css">
+    <script type="text/javascript" src="js/lib/webuploader.js"></script>
+    <script type="text/javascript" src="js/upload-image.js"></script>
+
+    <script type="text/javascript" src="js/lib/plupload.full.min.js"></script>
+    <script type="text/javascript" src="js/lib/qiniu.js"></script>
+
+
+    <script type="text/javascript" src="js/qiniu.js"></script>
+
 
     <script>vex.defaultOptions.className = 'vex-theme-os';</script>
 </head>
 <body>
 <h1 style="text-align: center"><a href="about.html" style="color: #444444">About</a></h1>
+
+
 <div id="columns">
     <figure style="position: relative;">
         <div style="position: relative" id="img-1">
@@ -41,6 +54,15 @@
         </div>
     </figure>
 </div>
+
+
+<div class="side-bar">
+    <a href="#" class="icon-upload">
+        <img src="img/upload.png" width="66" onclick="upload()">
+    </a>
+</div>
+
+
 
 <script src='js/main.js'></script>
 

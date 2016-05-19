@@ -81,5 +81,32 @@ $('img').mouseleave(function (e) {
     clearInterval(window.inter);
 });
 
+function getDoc(fn) {
+    return fn.toString().split('\n').slice(1, -1).join('\n') + '\n'
+}
 
 
+function upload() {
+    var htmlContent = getDoc(function () {/*
+<div id="container">
+<a href="#" id="pickfiles">选择文件</a>
+</div>*/
+    });
+
+    vex.dialog.open({
+        message: 'Upload Image',
+        input: '<div id="container"><a href="#" id="pickfiles">选择文件</a></div>',
+        buttons: [
+            $.extend({}, vex.dialog.buttons.YES, {
+                text: 'Hit !'
+            })
+        ],
+        callback: function (data) {
+            // Variable to store your files
+            var file = $('input[type=file]')[0].files[0];
+            console.log(file);
+        }
+    });
+    initQiniu();
+
+}

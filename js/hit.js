@@ -22,7 +22,7 @@ function HitPhoto(stage, commentBox) {
             //经过的时间
             duration: 3500,
             //舞台偏移的高度
-            top: Math.random() * 400,
+            top: Math.random() * 300,
             //弹幕文字大小
             size: 60,
             //弹幕颜色

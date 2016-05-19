@@ -44,8 +44,51 @@ div#columns:hover figure:not(:hover) {
     }
 }
 
-.screen{
+.screen {
     /*background-color: #3288e6;*/
     font-size: 36px;
     text-align: center;
+}
+
+
+.side-bar {
+    width: 66px;
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    font-size: 0;
+    line-height: 0;
+    z-index: 100;
+}
+
+.side-bar a {
+    width: 66px;
+    height: 66px;
+    display: inline-block;
+    margin-bottom: 2px;
+}
+
+.side-bar a:hover {
+    background-color: #fcfcfc;
+}
+
+.side-bar .icon-upload {
+    background-position: 0 -62px;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
 }
