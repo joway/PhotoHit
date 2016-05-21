@@ -87,24 +87,32 @@ function getDoc(fn) {
 
 
 function upload() {
-    var htmlContent = getDoc(function () {/*
-<div id="container">
-<a href="#" id="pickfiles">选择文件</a>
-</div>*/
-    });
+    var htmlContent = '<form id="upload-form" method="post" action="http://up.qiniu.com" enctype="multipart/form-data">' +
+        '<input id="token" name="token" class="ipt" value="" hidden>' +
+        '<input id="key" name="key" value="" hidden>'+
+        '<input name="file" class="ipt" type="file" />' +
+        '</form>';
 
     vex.dialog.open({
         message: 'Upload Image',
-        input: '<div id="container"><a href="#" id="pickfiles">选择文件</a></div>',
+        input: htmlContent,
         buttons: [
             $.extend({}, vex.dialog.buttons.YES, {
                 text: 'Hit !'
             })
         ],
         callback: function (data) {
-            // Variable to store your files
-            var file = $('input[type=file]')[0].files[0];
-            console.log(file);
+            $.post('http://api.joway.wang/upload/token/', function (result) {
+                $("#token").val(result.token);
+                var filename = new Date().getTime();
+                console.log(filename);
+                $('#key').val(filename);
+
+                $("#upload-form").ajaxSubmit(function(message) {
+                    alert('上传成功');
+                });
+
+            });
         }
     });
     initQiniu();

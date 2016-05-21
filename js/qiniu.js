@@ -5,13 +5,14 @@ function initQiniu() {
         // 在初始化时，uptoken, uptoken_url, uptoken_func 三个参数中必须有一个被设置
         // 切如果提供了多个，其优先级为 uptoken > uptoken_url > uptoken_func
         // 其中 uptoken 是直接提供上传凭证，uptoken_url 是提供了获取上传凭证的地址，如果需要定制获取 uptoken 的过程则可以设置 uptoken_func
-        uptoken : '8TiyJ3_BDDE_CQUnuZLr-5LjLkrYuUKSxU8ZQbpG:jB8Yc_HDB5VkU1MqlNhpTC74cQE=:eyJkZWFkbGluZSI6MTQ2MzY1OTg0MSwiY2FsbGJhY2tVcmwiOiJodHRwOi8vam93YXkudHVubmVsLnBocG9yLm1lL3VwbG9hZC9jYWxsYmFjay8iLCJzY29wZSI6ImkycHNlcnZlciIsImNhbGxiYWNrQm9keSI6ImZpbGVuYW1lPSQoZm5hbWUpJmZpbGVzaXplPSQoZnNpemUpJnR5cGU9JChtaW1lVHlwZSkmaGFzaD0kKGV0YWcpIn0=', // uptoken 是上传凭证，由其他程序生成
-        uptoken_url: '/upload/token/',         // Ajax 请求 uptoken 的 Url，**强烈建议设置**（服务端提供）
+        // uptoken : '8TiyJ3_BDDE_CQUnuZLr-5LjLkrYuUKSxU8ZQbpG:jB8Yc_HDB5VkU1MqlNhpTC74cQE=:eyJkZWFkbGluZSI6MTQ2MzY1OTg0MSwiY2FsbGJhY2tVcmwiOiJodHRwOi8vam93YXkudHVubmVsLnBocG9yLm1lL3VwbG9hZC9jYWxsYmFjay8iLCJzY29wZSI6ImkycHNlcnZlciIsImNhbGxiYWNrQm9keSI6ImZpbGVuYW1lPSQoZm5hbWUpJmZpbGVzaXplPSQoZnNpemUpJnR5cGU9JChtaW1lVHlwZSkmaGFzaD0kKGV0YWcpIn0=', // uptoken 是上传凭证，由其他程序生成
+        // uptoken_url: '/upload/token/',         // Ajax 请求 uptoken 的 Url，**强烈建议设置**（服务端提供）
         uptoken_func: function(file){    // 在需要获取 uptoken 时，该方法会被调用
-           // do something
-           return '';
+            $.post('http://localhost:8000/upload/token/',function(result){
+                return result.token;
+            });
         },
-        get_new_uptoken: false,             // 设置上传文件的时候是否每次都重新获取新的 uptoken
+        get_new_uptoken: true,             // 设置上传文件的时候是否每次都重新获取新的 uptoken
         // downtoken_url: '/downtoken',
         // Ajax请求downToken的Url，私有空间时使用,JS-SDK 将向该地址POST文件的key和domain,服务端返回的JSON必须包含`url`字段，`url`值为该文件的下载地址
         unique_names: true,              // 默认 false，key 为文件名。若开启该选项，JS-SDK 会为每个文件自动生成key（文件名）
@@ -20,7 +21,7 @@ function initQiniu() {
         container: 'container',             // 上传区域 DOM ID，默认是 browser_button 的父元素，
         max_file_size: '100mb',             // 最大文件体积限制
         // flash_swf_url: 'path/of/plupload/Moxie.swf',  //引入 flash,相对路径
-        max_retries: 3,                     // 上传失败最大重试次数
+        max_retries: 2,                     // 上传失败最大重试次数
         dragdrop: true,                     // 开启可拖曳上传
         drop_element: 'container',          // 拖曳上传区域元素的 ID，拖曳文件或文件夹后可触发上传
         chunk_size: '4mb',                  // 分块上传时，每块的体积
@@ -50,6 +51,7 @@ function initQiniu() {
             },
             'UploadProgress': function(up, file) {
                 // 每个文件上传时,处理相关的事情
+                alert('uploading');
             },
             'FileUploaded': function(up, file, info) {
                 var domain = up.getOption('domain');
@@ -71,6 +73,7 @@ function initQiniu() {
                 // 该配置必须要在 unique_names: false , save_key: false 时才生效
                 var key = "";
                 // do something with key here
+                console.log(file)
                 return key
             }
         }

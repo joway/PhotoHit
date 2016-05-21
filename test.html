@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/lib/jquery.min.js"></script>
+
+</head>
+<body>
+
+<form id="upload-form" method="post" action="http://up.qiniu.com" enctype="multipart/form-data">
+    <input id="token" name="token" class="ipt" value="" hidden>
+    <input id="key" name="key" value="" hidden>
+    <input name="file" type="file" onchange="upload()"/>
+</form>
+
+
+<script>
+    $.post('http://localhost:8000/upload/token/', function (result) {
+        $("#token").val(result.token);
+    });
+
+    function upload() {
+        var filename = new Date().getTime();
+        console.log(filename);
+        $('#key').val(filename);
+        document.forms["upload-form"].submit();
+    }
+
+</script>
+</body>
+</html>
