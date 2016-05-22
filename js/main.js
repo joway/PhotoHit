@@ -89,7 +89,7 @@ function initListener() {
 
 }
 function upload() {
-    var htmlContent = '<form id="upload-form" method="post" action="http://up.qiniu.com" enctype="multipart/form-data">' +
+    var htmlContent = '<form id="upload-form" method="post" action="https://up.qbox.me" enctype="multipart/form-data">' +
         '<input id="token" name="token" class="ipt" value="" hidden>' +
         '<input id="key" name="key" value="" hidden>' +
         '<input id="file" name="file" class="ipt" type="file" accept="image/jpeg,image/png" />' +
