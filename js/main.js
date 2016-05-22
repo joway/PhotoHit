@@ -3,7 +3,7 @@ $.get('https://api.i2p.pub/upload/data.json', function (result) {
     for (var key in result) {
         var htmlContent = '<figure style="position: relative;">' +
             '<div style="position: relative" id="img-1">' +
-            '<img src="' + 'http://' + result[key].url + '">' +
+            '<img src="' + result[key].url + '">' +
             '</div>' + '<figcaption style="font-size: small">' + new Date(result[key].create_at)+ '</figcaption>'
         '</figure>';
         $('#columns').append(htmlContent);
