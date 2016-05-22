@@ -1,5 +1,5 @@
 
-$.get('http://api.joway.wang/upload/data.json', function (result) {
+$.get('https://api.i2p.pub/upload/data.json', function (result) {
     for (var key in result) {
         var htmlContent = '<figure style="position: relative;">' +
             '<div style="position: relative" id="img-1">' +
@@ -104,7 +104,7 @@ function upload() {
             })
         ],
         callback: function (data) {
-            $.post('http://api.joway.wang/upload/token/', function (result) {
+            $.post('https://api.i2p.pub/upload/token/', function (result) {
                 $("#token").val(result.token);
                 var filename = new Date().getTime();
                 console.log(filename);
