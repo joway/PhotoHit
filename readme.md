@@ -1,4 +1,4 @@
-### G11. PhotoHit
+### G12. PhotoHit
 #####```http://i2pstudio.github.io/PhotoHit/```
 ---
 组长： 王卓炜  2014211440
