@@ -4,9 +4,9 @@
     width: 50%;
     max-width: 1100px;
     margin: 50px auto;
-    padding: 50px;
+    padding: 20px;
     font-size: 36px;
-
+    text-align: center;
 }
 
 div#columns figure {

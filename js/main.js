@@ -2,8 +2,8 @@
 $.get('https://api.i2p.pub/upload/data.json', function (result) {
     for (var key in result) {
         var htmlContent = '<figure style="position: relative;">' +
-            '<div style="position: relative" id="img-1">' +
-            '<img src="' + result[key].url + '">' +
+            '<div style="position: relative;text-align: center" id="img-1">' +
+            '<img src="' + result[key].url + '" class="photohit-img">' +
             '</div>' + '<figcaption style="font-size: small">' + new Date(result[key].create_at)+ '</figcaption>'
         '</figure>';
         $('#columns').append(htmlContent);
@@ -53,7 +53,7 @@ function initListener() {
 
 
 
-    $('img').mouseover(function (e) {
+    $('.photohit-img').mouseover(function (e) {
         if (window.isEnable) {
             return false;
         }
@@ -75,7 +75,7 @@ function initListener() {
 
     });
 
-    $('img').mouseleave(function (e) {
+    $('.photohit-img').mouseleave(function (e) {
         if (window.isEnable == false) {
             return false;
         }
