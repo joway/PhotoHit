@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>PhotoHit</title>
+    <style>
+        @import url(https://fonts.lug.ustc.edu.cn/css?family=Yanone+Kaffeesatz);
+        @import url(https://fonts.lug.ustc.edu.cn/css?family=Droid+Serif:400,700,400italic);
+        @import url(https://fonts.lug.ustc.edu.cn/css?family=Ubuntu+Mono:400,700,400italic);
+
+        body { font-family: 'Droid Serif'; }
+        h1, h2, h3 {
+            font-family: 'Yanone Kaffeesatz';
+            font-weight: normal;
+        }
+        .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+</head>
+<body>
+<textarea id="source">
+
+class: center, middle
+
+
+# [PhotoHit](https://i2pstudio.github.io/PhotoHit/)
+
+
+## Author
+
+王卓炜 2014211440
+
+祝力炀 2014210820
+
+翁超 2014211136
+
+---
+class: center, middle
+
+# Index
+===
+
+### Introduction
+
+### Design
+
+### FrontEnd
+
+### BackEnd
+
+### Demo
+
+---
+class: center, middle
+
+# Introduction
+
+## 基于图片流的弹幕社交网站
+
+### 基本功能以及工作进度:
+
+1. 支持图片分享
+2. 支持点击图片发送弹幕并上传至数据库
+3. 用户系统构建完毕
+4. 用户评论系统构建完毕
+5. 测试并修复bug
+
+---
+class: center, middle
+
+# Design
+
+1. 七牛云存储API存取照片,处理照片大小, 压缩照片尺寸等图像处理工作
+
+2. Python Django 后端，生成七牛Token，存放照片id，以及对应的弹幕数据
+
+3. 用户系统使用 python-social-auth 以支持第三方登陆
+
+4. 全部按照 Restful API 规范构建，前后端分离
+
+---
+class: center, middle
+
+# FrontEnd
+
+1. 使用 [artTemplate](https://github.com/aui/artTemplate) 模板构建，前期使用本地json文件构造假数据
+2. 使用 jquery ajax 进行 get/post , 以及 dom 树操作
+3. 使用 [wilddog](https://www.wilddog.com/) 进行弹幕数据轻量级存储
+4. 对接七牛SDK上传图片至云端
+
+---
+class: center, middle
+
+# BackEnd
+
+1. 建立七牛 token 生成接口
+2. 构建基础用户体系
+3. 构建评论接口
+4. 使用 docker 部署至阿里云服务器
+5. 接入外网数据库
+
+---
+class: center, middle
+
+# Demo
+
+主界面
+
+<img src="https://dn-joway.qbox.me/2016-06-06_20:22:17.jpg" width="600" />
+
+---
+class: center, middle
+
+发送弹幕
+<img src="https://dn-joway.qbox.me/2016-06-06_20:11:38.jpg" width="800" />
+
+
+---
+class: center, middle
+
+登陆/注册
+
+<img src="https://dn-joway.qbox.me/2016-06-06_20:12:44.jpg" width="800" />
+
+
+---
+class: center, middle
+
+主评论区
+
+<img src="https://dn-joway.qbox.me/2016-06-06_20:13:35.jpg" width="800" />
+
+---
+class: center, middle
+
+wilddog 弹幕数据一览:
+
+<img src="https://dn-joway.qbox.me/2016-06-06_20:02:22.jpg" width="800" />
+
+---
+class: center, middle
+#### 移动端支持
+<img src="https://dn-joway.qbox.me/2016-06-06_20:24:10.jpg" height="600" />
+
+---
+class: center, middle
+
+# Thanks!
+
+    </textarea>
+<script src="remark-latest.min.js">
+</script>
+<script>
+    var slideshow = remark.create();
+</script>
+</body>
+</html>
