@@ -1,10 +1,21 @@
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 $.get('https://api.i2p.pub/upload/data.json', function (result) {
     for (var key in result) {
+        var date = new Date(result[key].create_at);
         var htmlContent = '<figure style="position: relative;">' +
             '<div style="position: relative;text-align: center" id="img-1">' +
             '<img src="' + result[key].url + '" class="photohit-img">' +
-            '</div>' + '<figcaption style="font-size: small">' + new Date(result[key].create_at)+ '</figcaption>'
+            '</div>' + '<figcaption style="font-size: small">' + formatDate(result[key].create_at) + '</figcaption>'
         '</figure>';
         $('#columns').append(htmlContent);
         console.log(result[key]);
@@ -50,7 +61,6 @@ function initListener() {
             }
         });
     });
-
 
 
     $('.photohit-img').mouseover(function (e) {
@@ -101,9 +111,15 @@ function upload() {
         buttons: [
             $.extend({}, vex.dialog.buttons.YES, {
                 text: 'Hit !'
+            }),
+            $.extend({}, vex.dialog.buttons.NO, {
+                text: 'Cancel !'
             })
         ],
         callback: function (data) {
+            if (data == false) {
+                return;
+            }
             $.post('https://api.i2p.pub/upload/token/', function (result) {
                 $("#token").val(result.token);
                 var filename = new Date().getTime();
